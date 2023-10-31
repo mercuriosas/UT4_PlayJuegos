@@ -1,5 +1,6 @@
 package com.example.ut4_playjuegosv2
 
+import android.app.Activity
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -44,6 +46,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ut4_playjuegosv2.ui.theme.AzulDark
 import com.example.ut4_playjuegosv2.ui.theme.NaranjaLight
+import com.example.ut4_playjuegosv2.ui.theme.PrimaryContainerLight
+import com.example.ut4_playjuegosv2.ui.theme.TemaPersonalizado
+import com.example.ut4_playjuegosv2.ui.theme.teal400
 
 @Preview(showBackground = true)
 @Composable
@@ -128,14 +133,21 @@ fun CreaCard(nombre: String) {
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp).clickable {
-                Toast.makeText(context, nombre, Toast.LENGTH_LONG).show()
+            .height(100.dp)
+            .clickable {
+                Toast
+                    .makeText(
+                        context,
+                        "Has seleccionado el género " + nombre + " " + descripcion,
+                        Toast.LENGTH_LONG
+                    )
+                    .show()
             }
         //.height(60.dp),
         , shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(containerColor = NaranjaLight)
     ) {
-        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceAround) {
+        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(
                 text = nombre,
                 modifier = Modifier
@@ -185,7 +197,7 @@ fun CreaCard(nombre: String) {
             }
             Image(
                 painter = painterResource(id = imagen),
-                contentDescription = descripcion, Modifier.fillMaxHeight()
+                contentDescription = descripcion, Modifier.fillMaxHeight().width(180.dp)
             )
         }
     }
@@ -202,17 +214,13 @@ fun FilterChipExample(opcion: String) {
     FilterChip(
         onClick = {
             selected = !selected
-            /*if (colores == NaranjaLight) {
-                colores = Color.Magenta
-            } else {
-                colores = NaranjaLight
-            }*/
+
         },
         label = {
             Text(opcion)
         },
         colors = FilterChipDefaults.filterChipColors(
-            containerColor = AzulDark,
+            containerColor = teal400,
             labelColor = Color.White,
             selectedContainerColor = colores
         ),
@@ -230,6 +238,7 @@ fun FilterChipExample(opcion: String) {
         },
     )
 }
+
 
 @Preview(showBackground = true)
 @Composable

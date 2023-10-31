@@ -32,8 +32,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.ut4_playjuegosv2.ui.theme.NaranjaSec
 
 var datosCheck: MutableList<CheckInfo> = mutableListOf()
@@ -84,7 +86,11 @@ fun Games() {
         ) {
             Spacer(modifier = Modifier.height(10.dp))
             Spacer(modifier = Modifier.width(10.dp))
-
+            Text(
+                text = "Selecciona los juegos:",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
             //val myOptions = getOptions()
             //MyCheckBox(myOptions[6])
             myOptions.forEach {
@@ -166,6 +172,7 @@ fun MyCheckBox(checkInfo: CheckInfo) {
         Text(text = checkInfo.title, modifier = Modifier.padding(top = 16.dp))
     }
 }
+
 
 @Composable
 fun getOptions(titles: List<String>): List<CheckInfo> {

@@ -32,6 +32,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.ut4_playjuegosv2.ui.theme.TemaPersonalizado
 import com.example.ut4_playjuegosv2.ui.theme.UT4_PlayJuegosV2Theme
 import com.example.ut4_playjuegosv2.ui.theme.courgetteRegularFamily
 
@@ -39,7 +40,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            UT4_PlayJuegosV2Theme {
+            TemaPersonalizado{
+            //UT4_PlayJuegosV2Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -56,6 +58,7 @@ class MainActivity : ComponentActivity() {
                         composable("Play") { Games() }
                         composable("NewPlayer") { MenuNewPlayer() }
                         composable("Preferences") { preferences() }
+                        composable("About") { UsersView() }
                         composable("Tipos") { Types() }
                     }
                 }
@@ -113,7 +116,7 @@ fun MenuPlayJuegos(navController: NavHostController) {
                     //Spacer(modifier = Modifier.size(20.dp))
                     //Button(onClick = { navController.navigate("Preferences") }, modifier = Modifier.width(200.dp)) {
                     Button(
-                        onClick = { },
+                        onClick = {navController.navigate("About") },
                         modifier = Modifier.width(200.dp)
                     ) {
                         Text(text = "About")
@@ -152,7 +155,7 @@ fun MenuPlayJuegos(navController: NavHostController) {
                         //Spacer(modifier = Modifier.size(20.dp))
                         //Button(onClick = { navController.navigate("Preferences") }, modifier = Modifier.width(200.dp)) {
                         Button(
-                            onClick = { },
+                            onClick = {navController.navigate("About") },
                             modifier = Modifier.width(200.dp)
                         ) {
                             Text(text = "About")
